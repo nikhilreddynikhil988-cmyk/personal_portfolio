@@ -1,5 +1,8 @@
 .hero {
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
   height: 90vh;
   display: flex;
   align-items: center;

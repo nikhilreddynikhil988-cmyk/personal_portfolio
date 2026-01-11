@@ -14,7 +14,7 @@ const About = () => {
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn">Download Resume</a>
           </div>
           <div className="about-image">
-            <img src="https://via.placeholder.com/300" alt="About Me" />
+            <img src="/images/about-me.jpg" alt="About Me" />
           </div>
         </div>
       </div>
