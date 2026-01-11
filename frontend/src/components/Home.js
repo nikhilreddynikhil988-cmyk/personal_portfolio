@@ -2,8 +2,14 @@ import React from 'react';
 import './Home.css';
 
 const Home = () => {
+  const heroStyle = {
+    background: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/hero-bg.jpg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  };
+
   return (
-    <header className="hero">
+    <header className="hero" style={heroStyle}>
       <div className="container">
         <div className="hero-content">
           <h1>Welcome to My Portfolio</h1>
