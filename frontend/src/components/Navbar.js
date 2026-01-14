@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="container">
+      <div className="container navbar-container">
         <h1 className="logo">My Portfolio</h1>
         <div className="menu-icon" onClick={toggleMenu}>
           <i className={isOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
@@ -19,6 +19,7 @@ const Navbar = () => {
         <ul className={isOpen ? 'nav-links active' : 'nav-links'}>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
+          <li><Link to="/resume">Resume</Link></li>
           <li><Link to="/projects">Projects</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>
