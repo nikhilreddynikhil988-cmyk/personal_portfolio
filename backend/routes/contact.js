@@ -29,14 +29,16 @@ const handleContactForm = async (req, res) => {
     });
 
     await newMessage.save();
+    console.log('Message saved to database');
 
     // Send email notification
     if (process.env.RESEND_API_KEY) {
+      console.log('Attempting to send email via Resend...');
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
           from: 'Portfolio Contact Form <onboarding@resend.dev>',
-          to: process.env.RECIPIENT_EMAIL || 'nikhilreddynikhil988@gmail.com', // Fallback or provided email
+          to: process.env.RECIPIENT_EMAIL || 'nikhilreddynikhil988@gmail.com',
           subject: `New Message: ${subject}`,
           html: `
             <h3>New Contact Form Submission</h3>
@@ -50,14 +52,13 @@ const handleContactForm = async (req, res) => {
         console.log('Email sent successfully');
       } catch (emailErr) {
         console.error('Failed to send email:', emailErr);
-        // We don't return 500 here because the message was saved to DB successfully
       }
     }
 
     res.status(201).json({ msg: 'Message sent successfully' });
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+    console.error('Contact route error:', err);
+    res.status(500).json({ error: err.message });
   }
 };
 
