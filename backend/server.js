@@ -41,6 +41,10 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use('/api/contact', contactRoute);
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+  });
+}
+
+module.exports = app;
