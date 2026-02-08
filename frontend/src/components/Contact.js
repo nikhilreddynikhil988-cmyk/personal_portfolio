@@ -28,7 +28,7 @@ const Contact = () => {
         message: ''
       });
     } catch (err) {
-      console.error(err.response.data);
+      console.error('Submission error:', err.response?.data || err.message);
       alert('Failed to send message. Please try again later.');
     }
   };
