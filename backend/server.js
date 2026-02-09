@@ -59,11 +59,15 @@ app.get('/api/health', (req, res) => {
 app.use('/api/contact', contactRoute);
 
 // Serve static files from the React build
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+const buildPath = path.join(process.cwd(), 'frontend/build');
+console.log('Serving static files from:', buildPath);
+app.use(express.static(buildPath));
 
 // Catch-all route for SPA - serve index.html for any non-API routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+  const indexPath = path.join(buildPath, 'index.html');
+  console.log('Attempting to serve:', indexPath);
+  res.sendFile(indexPath);
 });
 
 app.listen(port, () => {
