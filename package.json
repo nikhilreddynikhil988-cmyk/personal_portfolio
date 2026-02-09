@@ -10,5 +10,9 @@
     "mongoose": "^7.0.3",
     "resend": "^6.9.1",
     "serverless-http": "^3.0.0"
+  },
+  "scripts": {
+    "postinstall": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/server.js"
   }
 }
