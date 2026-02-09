@@ -44,6 +44,10 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('Ensure MongoDB is running locally if you are in offline mode.');
   });
 
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'API is running' });
+});
+
 app.use('/api/contact', contactRoute);
 
 if (process.env.NODE_ENV !== 'production') {
