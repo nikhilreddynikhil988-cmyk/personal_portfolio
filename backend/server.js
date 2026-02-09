@@ -5,6 +5,11 @@ const contactRoute = require('./routes/contact');
 require('dotenv').config();
 
 const app = express();
+// Log incoming requests for debugging on Vercel
+app.use((req, res, next) => {
+  console.log('Incoming request:', req.method, req.originalUrl);
+  next();
+});
 const port = process.env.PORT || 5000;
 
 // Update CORS for production
@@ -32,6 +37,8 @@ app.use(cors({
   },
   credentials: true
 }));
+// Ensure preflight OPTIONS requests are handled
+app.options('*', cors());
 app.use(express.json());
 
 // Connect to MongoDB
