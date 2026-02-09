@@ -59,7 +59,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/contact', contactRoute);
 
 // Serve static files from the React build
-const buildPath = path.join(process.cwd(), 'frontend/build');
+const buildPath = path.join(__dirname, '../frontend/build');
 console.log('Serving static files from:', buildPath);
 app.use(express.static(buildPath));
 
