@@ -2,13 +2,9 @@ services:
   - type: web
     name: personal-portfolio
     env: node
-    plan: free
-    build:
-      command: npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend
-    start:
-      command: node backend/server.js
+    buildCommand: npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend
+    startCommand: node backend/server.js
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
+
