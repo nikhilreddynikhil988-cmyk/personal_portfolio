@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const contactRoute = require('./routes/contact');
 require('dotenv').config();
 
@@ -56,6 +57,14 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/contact', contactRoute);
+
+// Serve static files from the React build
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+// Catch-all route for SPA - serve index.html for any non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
