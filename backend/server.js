@@ -59,15 +59,38 @@ app.get('/api/health', (req, res) => {
 app.use('/api/contact', contactRoute);
 
 // Serve static files from the React build
-const buildPath = path.join(__dirname, '../frontend/build');
-console.log('Serving static files from:', buildPath);
+const buildPath = path.resolve(__dirname, '../frontend/build');
+console.log('--- Deployment Diagnostics ---');
+console.log('Current directory (__dirname):', __dirname);
+console.log('Targeting build path:', buildPath);
+
+// Check if build directory exists (logging only)
+const fs = require('fs');
+if (fs.existsSync(buildPath)) {
+  console.log('✓ Build directory found');
+  const files = fs.readdirSync(buildPath);
+  console.log('Files in build directory:', files);
+} else {
+  console.log('✗ Build directory NOT found at:', buildPath);
+}
+console.log('------------------------------');
+
 app.use(express.static(buildPath));
 
 // Catch-all route for SPA - serve index.html for any non-API routes
 app.get('*', (req, res) => {
   const indexPath = path.join(buildPath, 'index.html');
-  console.log('Attempting to serve:', indexPath);
-  res.sendFile(indexPath);
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error('Error sending index.html:', err);
+      // In production, provide a more helpful error message
+      res.status(404).json({
+        error: 'Frontend not found',
+        pathChecked: indexPath,
+        message: 'Please ensure build step completed successfully.'
+      });
+    }
+  });
 });
 
 app.listen(port, () => {
