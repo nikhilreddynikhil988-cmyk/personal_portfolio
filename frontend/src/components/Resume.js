@@ -93,6 +93,15 @@ const Resume = () => {
                     </section>
 
                     <section className="resume-section">
+                        <h2>Internship Experience</h2>
+                        <h3>Web Development Intern – Unified Mentor</h3>
+                        <p>Completed a one-month virtual internship at Unified Mentor, where I worked on real-</P>
+                        <p>world web development tasks and enhanced my practical knowledge of full-stack</p>
+                        <p>development. Gained hands-on experience in designing responsive web applications and</p>
+                        <p>implementing backend logic.</p>
+                    </section>
+
+                    <section className="resume-section">
                         <h2>Strengths</h2>
                         <ul className="resume-list">
                             <li>Strong problem-solving skills</li>
