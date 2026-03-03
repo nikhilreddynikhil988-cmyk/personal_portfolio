@@ -78,10 +78,9 @@ const Resume = () => {
                             <p>Focused on clean UI and beginner-friendly content presentation.</p>
                         </div>
                         <div className='project-item'>
-                            <h3>Civic Issue Reporting System</h3>
-                            <p>Developed a web platform for citizens to report civic issues such as potholes, garbage, and water leakage.</p>
-                            <p>Implemented issue tracking with real-time status updates and location-based reporting.</p>
-                            <p>Improved civic engagement through a clean and user-friendly interface.</p>
+                            <h3>Smart Hostel Complaint Management System</h3>
+                            <p>A structured complaint management system that allows students to register and track</p>
+                            <p>hostel-related issues while administrators manage and resolve complaints transparently.</p>
                         </div>
                     </section>
 
